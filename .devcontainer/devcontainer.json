@@ -1,0 +1,11 @@
+{
+  "name": "Plutus Tx Template",
+
+  "image": "docker.io/inputoutput/plutus-tx-template:latest",
+
+  "remoteUser": "plutus",
+
+  "mounts": [
+    "source=${localEnv:HOME}/.cabal/packages,target=/home/plutus/.cabal/packages,type=bind,consistency=cached"
+  ]
+}
