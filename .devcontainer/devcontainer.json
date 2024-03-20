@@ -1,7 +1,7 @@
 {
   "name": "Plutus Tx Template",
 
-  "image": "docker.io/inputoutput/plutus-tx-template:latest",
+  "image": "ghcr.io/input-output-hk/plutus-tx-template:latest",
 
   "remoteUser": "plutus",
 
