@@ -1,11 +1,13 @@
 {
-  "name": "Plutus Tx Template",
-
-  "image": "ghcr.io/input-output-hk/plutus-tx-template:latest",
-
-  "remoteUser": "plutus",
-
-  "mounts": [
-    "source=${localEnv:HOME}/.cabal/packages,target=/home/plutus/.cabal/packages,type=bind,consistency=cached"
-  ]
+  "image": "ghcr.io/input-output-hk/devx-devcontainer:ghc96-iog",
+  "customizations": {
+     "vscode": {
+        "extensions": [
+           "haskell.haskell"
+        ],
+        "settings": {
+           "haskell.manageHLS": "PATH"
+        }
+     }
+  }
 }
