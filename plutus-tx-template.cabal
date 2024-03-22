@@ -24,9 +24,4 @@ executable plutus-tx-template
     , text
     , time
 
-  -- build-tool-depends:
-  --   , cardano-cli:cardano-cli                
-  --   , cardano-node:cardano-node              
-  -- , cardano-submit-api:cardano-submit-api  
-
   other-modules:    AuctionValidator
