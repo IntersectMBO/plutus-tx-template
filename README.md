@@ -38,9 +38,11 @@ A template repository for your `plutus-tx` smart contract project.
 
   You can modify your [`devcontainer.json`](./.devcontainer/devcontainer.json) file to customize the container (more info [here](https://github.com/input-output-hk/devx?tab=readme-ov-file#vscode-devcontainer--github-codespace-support)).
   
-  Or using your local docker installation:
+  Or using your local docker installation (change the `/path/to/my-project` accordingly):
   ```
-  docker run -it ghcr.io/input-output-hk/devx-devcontainer:x86_64-linux.ghc96-iog
+  docker run \
+    -v /path/to/my-project:/workspaces/my-project \
+    -it ghcr.io/input-output-hk/devx-devcontainer:x86_64-linux.ghc96-iog 
   ```
 
   When using this approach, you can ignore/delete/replace the nix files entirely.
