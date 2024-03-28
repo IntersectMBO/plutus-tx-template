@@ -57,4 +57,4 @@ A template repository for your `plutus-tx` smart contract project.
 
 ### 3. Run the example application
 
-Run `cabal update` first, then follow the in [app/QUICKSTART.md](./app/QUICKSTART.md).
+Run `cabal update` first, then read [app/QUICKSTART.md](./app/QUICKSTART.md) to get started.
