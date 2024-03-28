@@ -16,6 +16,13 @@
 {-# OPTIONS_GHC -fno-unbox-strict-fields #-}
 {-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.0.0 #-}
 
+{-
+Note that we imports `ScriptContext` from `PlutusLedgerApi.V2`, which means that 
+the script created from it will be a PlutusV2 script.
+PlutusV2 only supports Plutus Core v1.0.0 (currently the highest and default 
+version is v1.1.0), which is why the `target-version=1.0.0` flag is needed.
+-}
+
 module AuctionValidator where
 
 import PlutusCore.Version (plcVersion100)

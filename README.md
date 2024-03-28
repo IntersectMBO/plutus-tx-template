@@ -2,6 +2,8 @@
 
 A template repository for your `plutus-tx` smart contract project.
 
+`plutus-tx` currently supports GHC `v9.2.x` and `v9.6.x`. Cabal `v3.8+` is recommended.
+
 ### 1. Create the repository
 
 - From the command line: 
@@ -55,8 +57,4 @@ A template repository for your `plutus-tx` smart contract project.
 
 ### 3. Run the example application
 
-Run `cabal update` first, then run `cabal build all && cabal run plutus-tx-template`.
-
-You should see a `validator.uplc` file in your project's directory.
-
-You can now read the [plutus docs](https://plutus.readthedocs.io/en/latest/quick-start.html).
+Run `cabal update` first, then follow the in [app/QUICKSTART.md](./app/QUICKSTART.md).
