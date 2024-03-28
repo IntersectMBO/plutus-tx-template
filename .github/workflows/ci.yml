@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  devcointainer-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Build Project With Docker
+        run: | 
+          docker run \
+            -v ./.:/workspaces/plutus-tx-template \
+            -w /workspaces/plutus-tx-template \
+            -it ghcr.io/input-output-hk/devx-devcontainer:x86_64-linux.ghc96-iog \ 
+            bash -c "cabal update && cabal build all"
+
