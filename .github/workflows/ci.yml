@@ -12,12 +12,14 @@ jobs:
         uses: actions/checkout@v4.1.1
 
       - name: Build Project With Docker
-        run: | 
-          # Note: the -i flag in "bash -ic" is necessary and causes bash to 
+        run: |
+          echo 1
+          # Note: the -i flag in "bash -ic" is necessary and causes bash to
           # "source ~/.bashrc" which correctly populates the env.
+          echo 2
           docker run \
             -v ./.:/workspaces/plutus-tx-template \
             -w /workspaces/plutus-tx-template \
             -it ghcr.io/input-output-hk/devx-devcontainer:x86_64-linux.ghc96-iog \
             bash -ic "cabal update && cabal run plutus-tx-template"
-
+          echo 3
