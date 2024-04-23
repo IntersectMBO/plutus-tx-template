@@ -5,7 +5,8 @@ on:
   pull_request:
 
 jobs:
-  devcointainer-build:
+
+  devcontainer-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
