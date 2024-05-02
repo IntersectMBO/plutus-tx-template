@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: plutus Release Version (e.g. 1.26.0.0)
+        required: true
+
+jobs:
+  bump-plutus-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Change Plutus Versions
+        run: |
+          CURRENT_DATE=$(date +"%Y-%m-%dT00:00:00Z")
+          sed -i '' "s/\(hackage.haskell.org \).*\$/\1$CURRENT_DATE/" cabal.project
+          sed -i '' "s/\(cardano-haskell-packages \).*\$/\1$CURRENT_DATE/" cabal.project
+          
+          PLUTUS_VERSION=${{ github.event.inputs.version }}
+          sed -i '' "s/\(plutus-core \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
+          sed -i '' "s/\(plutus-ledger-api \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
+          sed -i '' "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
+          sed -i '' "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Bump plutus Version to ${{ github.event.inputs.version }}
+          commit-message: Bump plutus Version to ${{ github.event.inputs.version }}
+          delete-branch: true 
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable Pull Request Auto-Merge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
+          token: ${{ secrets.GITHUB_TOKEN }}
+    
