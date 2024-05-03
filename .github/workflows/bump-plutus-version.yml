@@ -1,4 +1,4 @@
-name: CI
+name: Bump Plutus Version
 
 on:
   workflow_dispatch:
@@ -9,6 +9,7 @@ on:
 
 jobs:
   bump-plutus-version:
+    name: Bump Plutus Version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

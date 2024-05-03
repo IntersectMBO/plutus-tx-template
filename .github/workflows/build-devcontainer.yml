@@ -1,4 +1,4 @@
-name: CI
+name: Build DevContainer
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-devcontainer:
+    name: Build DevContainer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
