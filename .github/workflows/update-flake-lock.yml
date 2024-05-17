@@ -9,10 +9,27 @@ jobs:
   update-flake-lock:
     name: Update Flake Lock
     runs-on: ubuntu-latest
+
+    permissions:
+      actions: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
+        
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@main
+        id: update
+        uses: DeterminateSystems/update-flake-lock@v21
+        with: 
+          nix-options: --accept-flake-config
+
+      - name: Enable Pull Request Auto-Merge
+        uses: peter-evans/enable-pull-request-automerge@v3
+        if: steps.update.outputs.pull-request-operation == 'created'
+        with:
+          pull-request-number: ${{ steps.update.outputs.pull-request-number }}
+          merge-method: squash
+          token: ${{ secrets.GITHUB_TOKEN }}
