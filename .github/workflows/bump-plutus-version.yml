@@ -27,10 +27,18 @@ jobs:
           sed -i "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
           sed -i "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
 
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+  
+      - name: Update flake.lock
+        run: |
+          nix flake update --accept-flake-config
+
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6.0.5
         with:
+          branch: "bump-plutus-${{ github.event.inputs.version }}"
           title: Bump plutus Version to ${{ github.event.inputs.version }}
           commit-message: Bump plutus Version to ${{ github.event.inputs.version }}
           delete-branch: true 
