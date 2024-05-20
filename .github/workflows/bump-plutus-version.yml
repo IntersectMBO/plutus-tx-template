@@ -38,6 +38,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
+          branch: "bump-plutus-${{ github.event.inputs.version }}"
           title: Bump plutus Version to ${{ github.event.inputs.version }}
           commit-message: Bump plutus Version to ${{ github.event.inputs.version }}
           delete-branch: true 
