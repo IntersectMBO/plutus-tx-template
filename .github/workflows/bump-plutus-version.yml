@@ -27,6 +27,9 @@ jobs:
           sed -i "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
           sed -i "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
 
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+  
       - name: Update flake.lock
         run: |
           nix flake update --accept-flake-config
