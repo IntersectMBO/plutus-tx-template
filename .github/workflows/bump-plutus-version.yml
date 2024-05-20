@@ -27,6 +27,10 @@ jobs:
           sed -i "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
           sed -i "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
 
+      - name: Update flake.lock
+        run: |
+          nix flake update --accept-flake-config
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
