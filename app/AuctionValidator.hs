@@ -217,7 +217,7 @@ auctionTypedValidator params (AuctionDatum highestBid) redeemer ctx@(ScriptConte
 
 -- BLOCK8
 {-# INLINEABLE auctionUntypedValidator #-}
-auctionUntypedValidator :: AuctionParams -> BuiltinData -> BuiltinData -> BuiltinData -> ()
+auctionUntypedValidator :: AuctionParams -> BuiltinData -> BuiltinData -> BuiltinData -> PlutusTx.BuiltinUnit
 auctionUntypedValidator params datum redeemer ctx =
     PlutusTx.check
         ( auctionTypedValidator
@@ -229,7 +229,7 @@ auctionUntypedValidator params datum redeemer ctx =
 
 auctionValidatorScript ::
     AuctionParams ->
-    CompiledCode (BuiltinData -> BuiltinData -> BuiltinData -> ())
+    CompiledCode (BuiltinData -> BuiltinData -> BuiltinData -> PlutusTx.BuiltinUnit)
 auctionValidatorScript params =
     $$(PlutusTx.compile [||auctionUntypedValidator||])
         `PlutusTx.unsafeApplyCode` PlutusTx.liftCode plcVersion100 params
