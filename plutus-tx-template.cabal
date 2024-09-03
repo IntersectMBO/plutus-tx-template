@@ -17,10 +17,10 @@ executable plutus-tx-template
     , base
     , base16-bytestring
     , bytestring
-    , plutus-core ^>=1.32.0.0
-    , plutus-ledger-api ^>=1.32.0.0
-    , plutus-tx ^>=1.32.0.0
-    , plutus-tx-plugin ^>=1.32.0.0
+    , plutus-core ^>=1.33.1.0
+    , plutus-ledger-api ^>=1.33.1.0
+    , plutus-tx ^>=1.33.1.0
+    , plutus-tx-plugin ^>=1.33.1.0
     , text
     , time
 
