@@ -8,20 +8,48 @@ extra-doc-files: README.md
 common warnings
   ghc-options: -Wall
 
-executable plutus-tx-template
+library scripts
+  import:         warnings
+  hs-source-dirs: src
+  exposed-modules:
+    AuctionMintingPolicy
+    AuctionValidator
+
+  build-depends:
+    , base
+    , plutus-core        ^>=1.34
+    , plutus-ledger-api  ^>=1.34
+    , plutus-tx          ^>=1.34
+
+  if !(impl(ghcjs) || os(ghcjs))
+    build-depends: plutus-tx-plugin
+
+executable gen-auction-validator-blueprint
   import:           warnings
   hs-source-dirs:   app
   default-language: Haskell2010
-  main-is:          Main.hs
+  main-is:          GenAuctionValidatorBlueprint.hs
   build-depends:
     , base
-    , base16-bytestring
     , bytestring
+    , containers
     , plutus-core ^>=1.34.0.0
     , plutus-ledger-api ^>=1.34.0.0
     , plutus-tx ^>=1.34.0.0
     , plutus-tx-plugin ^>=1.34.0.0
-    , text
-    , time
+    , scripts
 
-  other-modules:    AuctionValidator
+executable gen-minting-policy-blueprint
+  import:           warnings
+  hs-source-dirs:   app
+  default-language: Haskell2010
+  main-is:          GenMintingPolicyBlueprint.hs
+  build-depends:
+    , base
+    , bytestring
+    , containers
+    , plutus-core ^>=1.34.0.0
+    , plutus-ledger-api ^>=1.34.0.0
+    , plutus-tx ^>=1.34.0.0
+    , plutus-tx-plugin ^>=1.34.0.0
+    , scripts
