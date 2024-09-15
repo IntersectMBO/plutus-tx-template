@@ -28,7 +28,7 @@ import System.Environment (getArgs)
 auctionParams :: AuctionParams
 auctionParams =
   AuctionParams
-    { apSeller = error "Replace with seller public key"
+    { apSeller = error "Replace with seller public key hash"
     , apCurrencySymbol = error "Replace with currency symbol"
     , apTokenName = "TokenToBeAuctioned"
     , apMinBid = 100
