@@ -6,9 +6,9 @@ The `main` function in `Main.hs` does two things:
 * Serialise the instantiated validator and write it to a file
 
 
-Replace `apSeller` with the seller's [PubKeyHash](https://intersectmbo.github.io/plutus/master/plutus-ledger-api/html/PlutusLedgerApi-V2.html#t:PubKeyHash), which can be generated using Cardano CLI, Cardano API or an off-chain library for Cardano.
+Replace `apSeller` with the seller's [PubKeyHash](https://plutus.cardano.intersectmbo.org/haddock/master/plutus-ledger-api/PlutusLedgerApi-V2.html#t:PubKeyHash), which can be generated using Cardano CLI, Cardano API or an off-chain library for Cardano.
 
-Replace `apEndTime` with your desired [POSIXTime](https://intersectmbo.github.io/plutus/master/plutus-ledger-api/html/PlutusLedgerApi-V2.html#t:POSIXTime).
+Replace `apEndTime` with your desired [POSIXTime](https://plutus.cardano.intersectmbo.org/haddock/master/plutus-ledger-api/PlutusLedgerApi-V2.html#t:POSIXTime).
 
 Now, build it: 
 ```
