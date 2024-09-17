@@ -1,0 +1,25 @@
+name: Feature Request
+description: Submit a feature request
+#title: ""
+#assignees:
+#  -
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request.
+        Please check the existing issues and [Plutus Docs](https://plutus.cardano.intersectmbo.org/docs) before raising.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature you'd like
+      description: A clear and detailed description of what you are suggesting.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you've considered
+      description: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: false
