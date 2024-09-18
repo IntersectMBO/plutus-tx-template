@@ -5,11 +5,12 @@ license:
 build-type:      Simple
 extra-doc-files: README.md
 
-common warnings
+common options
   ghc-options: -Wall
+  default-language: Haskell2010
 
 library scripts
-  import:         warnings
+  import:         options
   hs-source-dirs: src
   exposed-modules:
     AuctionMintingPolicy
@@ -25,9 +26,8 @@ library scripts
     build-depends: plutus-tx-plugin
 
 executable gen-auction-validator-blueprint
-  import:           warnings
+  import:           options
   hs-source-dirs:   app
-  default-language: Haskell2010
   main-is:          GenAuctionValidatorBlueprint.hs
   build-depends:
     , base
@@ -40,9 +40,8 @@ executable gen-auction-validator-blueprint
     , scripts
 
 executable gen-minting-policy-blueprint
-  import:           warnings
+  import:           options
   hs-source-dirs:   app
-  default-language: Haskell2010
   main-is:          GenMintingPolicyBlueprint.hs
   build-depends:
     , base
