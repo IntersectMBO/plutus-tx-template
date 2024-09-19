@@ -18,9 +18,9 @@ library scripts
 
   build-depends:
     , base
-    , plutus-core        ^>=1.34
-    , plutus-ledger-api  ^>=1.34
-    , plutus-tx          ^>=1.34
+    , plutus-core ^>=1.34.1.0
+    , plutus-ledger-api ^>=1.34.1.0
+    , plutus-tx ^>=1.34.1.0
 
   if !(impl(ghcjs) || os(ghcjs))
     build-depends: plutus-tx-plugin
@@ -33,10 +33,10 @@ executable gen-auction-validator-blueprint
     , base
     , bytestring
     , containers
-    , plutus-core ^>=1.34.0.0
-    , plutus-ledger-api ^>=1.34.0.0
-    , plutus-tx ^>=1.34.0.0
-    , plutus-tx-plugin ^>=1.34.0.0
+    , plutus-core ^>=1.34.1.0
+    , plutus-ledger-api ^>=1.34.1.0
+    , plutus-tx ^>=1.34.1.0
+    , plutus-tx-plugin ^>=1.34.1.0
     , scripts
 
 executable gen-minting-policy-blueprint
@@ -47,8 +47,8 @@ executable gen-minting-policy-blueprint
     , base
     , bytestring
     , containers
-    , plutus-core ^>=1.34.0.0
-    , plutus-ledger-api ^>=1.34.0.0
-    , plutus-tx ^>=1.34.0.0
-    , plutus-tx-plugin ^>=1.34.0.0
+    , plutus-core ^>=1.34.1.0
+    , plutus-ledger-api ^>=1.34.1.0
+    , plutus-tx ^>=1.34.1.0
+    , plutus-tx-plugin ^>=1.34.1.0
     , scripts
