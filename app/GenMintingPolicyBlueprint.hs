@@ -65,9 +65,10 @@ myValidator =
           , argumentSchema = definitionRef @()
           }
     , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort . serialiseCompiledCode $
-          auctionMintingPolicyScript (error "Replace with seller pkh")
+    , validatorCompiled = do 
+        let script = auctionMintingPolicyScript (error "Replace with seller public key hash")
+        let code = Short.fromShort (serialiseCompiledCode script) 
+        Just (compiledValidator PlutusV2 code)
     }
 
 writeBlueprintToFile :: FilePath -> IO ()
