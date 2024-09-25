@@ -75,9 +75,10 @@ myValidator =
           , argumentSchema = definitionRef @()
           }
     , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort . serialiseCompiledCode $
-          auctionValidatorScript auctionParams
+    , validatorCompiled = do
+        let script = auctionValidatorScript auctionParams
+        let code = Short.fromShort (serialiseCompiledCode script) 
+        Just (compiledValidator PlutusV2 code)
     }
 
 writeBlueprintToFile :: FilePath -> IO ()
