@@ -1,3 +1,8 @@
+packages: .
+--          certification
+
+-- Custom repository for cardano haskell packages
+-- See https://github.com/input-output-hk/cardano-haskell-packages on how to use CHaP in a Haskell project.
 repository cardano-haskell-packages
   url: https://chap.intersectmbo.org/
   secure: True
@@ -9,11 +14,59 @@ repository cardano-haskell-packages
     c00aae8461a256275598500ea0e187588c35a5d5d7454fb57eac18d9edb86a56
     d4a35cd3121aa00d18544bb0ac01c3e1691d618f462c46129271bccf39f7e8ee
 
+-- See CONTRIBUTING.adoc for how to update index-state
 index-state:
-  -- Bump both the following dates if you need newer packages from Hackage
-  , hackage.haskell.org 2024-10-14T00:00:00Z
-  -- Bump this if you need newer packages from CHaP
-  , cardano-haskell-packages 2024-10-14T00:00:00Z
+  , hackage.haskell.org 2024-06-12T10:10:17Z
+  , cardano-haskell-packages 2024-06-12T10:10:17Z
 
-packages:
-  ./.
+source-repository-package
+  type: git
+  location: https://github.com/IntersectMBO/cardano-node-emulator.git
+  tag: 4e448248122cece3238052b3639eb4c0c36b422d
+  --sha256: sha256-sB5pfwHm+r5z8gmePFogNoyFxKPR1TVVb2J8HQ7Eq1I=
+  subdir: plutus-ledger
+          plutus-script-utils
+          cardano-node-emulator
+          cardano-node-socket-emulator
+          freer-extras
+
+-- We never, ever, want this.
+write-ghc-environment-files: never
+
+-- Always build tests and benchmarks.
+tests: true
+benchmarks: true
+
+-- The only sensible test display option, since it allows us to have colourized
+-- 'tasty' output.
+test-show-details: direct
+
+-- These packages appear in our dependency tree and are very slow to build.
+-- Empirically, turning off optimization shaves off ~50% build time.
+-- It also mildly improves recompilation avoidance.
+-- For dev work we don't care about performance so much, so this is okay.
+package cardano-ledger-alonzo
+  optimization: False
+package ouroboros-consensus-cardano
+  optimization: False
+package cardano-api
+  optimization: False
+package cardano-crypto-praos
+  flags: -external-libsodium-vrf
+
+-- This is quickcheck-contractmodel's HEAD of the Conway branch:
+-- https://github.com/input-output-hk/quickcheck-contractmodel/tree/Conway
+source-repository-package
+    type: git
+    location: https://github.com/input-output-hk/quickcheck-contractmodel
+    tag: b19a7689a0d40ba3c7f91da87ef5fbcf20f3926c
+    --sha256: sha256-ronNW9uJoleclzLjRJhDWdWd9Dso2XSnUl4m3/2eb2k=
+    subdir:
+      quickcheck-contractmodel
+      quickcheck-threatmodel
+
+source-repository-package
+    type: git
+    location: https://github.com/Ali-Hill/plutus-contract-certification-node
+    tag: 945acad6ac294cb801d901fb4df851d9f2ca3106
+    --sha256: sha256-keiXJeCCAPmVNlBlrg9uDUEjuEFCPAsZ2kHVdycrIPU=

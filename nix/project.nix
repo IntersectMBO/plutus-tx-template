@@ -9,6 +9,8 @@ let
       isCross = pkgs.stdenv.hostPlatform != pkgs.stdenv.buildPlatform;
     in
     {
+      name = "esrow";
+
       src = ../.;
 
       shell.withHoogle = false;
@@ -16,8 +18,6 @@ let
       inputMap = {
         "https://chap.intersectmbo.org/" = inputs.CHaP;
       };
-
-      name = "plutus-tx-template";
 
       compiler-nix-name = lib.mkDefault "ghc96";
 

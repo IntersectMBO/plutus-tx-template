@@ -1,0 +1,153 @@
+cabal-version:   3.0
+name:            escrow
+-- version:         1.2.0.0
+version:         1.3.0.0
+maintainer:      alasdair.hill@iohk.io
+author:          Alasdair Hill
+stability:       experimental
+
+common lang
+  default-language:   Haskell2010
+  default-extensions:
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveLift
+    DeriveTraversable
+    ExplicitForAll
+    FlexibleContexts
+    GeneralizedNewtypeDeriving
+    ImportQualifiedPost
+    LambdaCase
+    NamedFieldPuns
+    ScopedTypeVariables
+    StandaloneDeriving
+
+  -- See Plutus Tx readme for why we need the following flags:
+  -- -fobject-code -fno-ignore-interface-pragmas and -fno-omit-interface-pragmas
+  ghc-options:
+    -Wall -Widentities -Wincomplete-record-updates -Wunused-packages
+    -Wincomplete-uni-patterns -Wnoncanonical-monad-instances
+    -Wredundant-constraints -Wmissing-import-lists -fobject-code
+    -fno-ignore-interface-pragmas -fno-omit-interface-pragmas
+    -fplugin-opt PlutusTx.Plugin:target-version=1.0.0
+
+library
+  import:             lang
+  exposed-modules:
+    Contract.Escrow
+    Spec.Escrow
+  hs-source-dirs:     src
+                      tests
+
+
+  --------------------
+  -- Local components
+  --------------------
+  build-depends:
+    cardano-node-emulator  >=1.3.0
+    , freer-extras         >=1.3.0
+    , plutus-ledger        >=1.3.0
+    , plutus-script-utils  >=1.3.0
+    , plutus-contract-certification-node
+
+  --------------------------
+  --nix log /nix/store/hzc7dw6ak5kqrqazghngyr1f8a27l327-escrow-plan-to-nix-pkgs.drv Other IOG dependencies
+  --------------------------
+  build-depends:
+    cardano-api:{cardano-api, gen, internal}
+    , cardano-crypto
+    , cardano-ledger-alonzo
+    , cardano-ledger-api
+    , cardano-ledger-babbage
+    , cardano-ledger-core
+    , cardano-ledger-shelley
+    , cardano-slotting
+    , ouroboros-consensus
+    , plutus-core                               >=1.0.0
+    , plutus-ledger-api                         >=1.0.0
+    , plutus-tx                                 >=1.3.0
+    , plutus-tx-plugin   >=1.0.0
+    , sop-extras
+    , strict-sop-core
+    , flat
+
+
+  ------------------------
+  -- Non-IOG dependencies
+  ------------------------
+  build-depends:
+    aeson                       >=2
+    , base                      >=4.9     && <5
+    , bytestring
+    , containers
+    , data-default
+    , freer-simple
+    , hedgehog
+    , html-entities
+    , lens
+    , mtl
+    , prettyprinter             >=1.1.0.1
+    , QuickCheck
+    , quickcheck-contractmodel  >=0.1.5.0
+    , quickcheck-dynamic
+    , quickcheck-threatmodel    >=0.1.5.0
+    , sop-core
+    , tasty
+    , tasty-quickcheck
+    , tasty-hunit
+    , text
+    , time
+
+
+test-suite escrow-test
+  import:             lang
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  hs-source-dirs:   src
+                    tests
+  default-language: Haskell2010
+  ghc-options:      -Wno-unused-packages
+  other-modules:
+    Spec.Escrow
+
+  --------------------
+  -- Local components
+  --------------------
+  build-depends:
+    cardano-node-emulator    >=1.3.0
+    , plutus-ledger          >=1.3.0
+    , plutus-script-utils    >=1.3.0
+    , plutus-contract-certification-node
+
+  --------------------------
+  -- Other IOG dependencies
+  --------------------------
+  build-depends:
+    cardano-api
+    , plutus-ledger-api  >=1.0.0
+    , plutus-tx          >=1.3.0
+    , plutus-tx-plugin   >=1.0.0
+
+  ------------------------
+  -- Non-IOG dependencies
+  ------------------------
+  build-depends:
+    aeson
+    , base                      >=4.9 && <5
+    , bytestring
+    , containers
+    , data-default
+    , hedgehog
+    , lens
+    , mtl
+    , QuickCheck
+    , quickcheck-contractmodel
+    , quickcheck-dynamic
+    , tasty
+    , tasty-golden
+    , tasty-hedgehog
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
+    , flat

@@ -1,9 +1,12 @@
-# Docs for this file: https://github.com/input-output-hk/iogx/blob/main/doc/api.md#flakenix
+# This file is part of the IOGX template and is documented at the link below:
+# https://www.github.com/input-output-hk/iogx#31-flakenix
+
 {
-  description = "Change the description field in your flake.nix";
+  description = "Minimal Escrow using Cardano Node Emulator";
 
 
   inputs = {
+
     iogx = {
       url = "github:input-output-hk/iogx";
       inputs.hackage.follows = "hackage";
@@ -28,15 +31,23 @@
       url = "github:input-output-hk/haskell.nix";
       inputs.hackage.follows = "hackage";
     };
+
+    # Used to provide the cardano-node and cardano-cli executables.
+    #cardano-node = {
+    #  url = "github:input-output-hk/cardano-node?ref=8.4.0-pre";
+    #};
+
+    #mithril = {
+    #  url = "github:input-output-hk/mithril";
+    #};
   };
 
 
-  # Docs for mkFlake: https://github.com/input-output-hk/iogx/blob/main/doc/api.md#mkflake
   outputs = inputs: inputs.iogx.lib.mkFlake {
     inherit inputs;
     repoRoot = ./.;
+    systems = [ "x86_64-darwin" "x86_64-linux" ];
     outputs = import ./nix/outputs.nix;
-    systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
   };
 
 
@@ -48,5 +59,6 @@
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
     ];
     allow-import-from-derivation = true;
+    accept-flake-config = true;
   };
 }
