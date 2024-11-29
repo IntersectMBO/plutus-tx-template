@@ -30,7 +30,7 @@ auctionParams =
   AuctionParams
     { apSeller = error "Replace with seller public key hash"
     , apCurrencySymbol = error "Replace with currency symbol"
-    , apTokenName = "TokenToBeAuctioned"
+    , apTokenName = error "Replace with token name"
     , apMinBid = 100
     , apEndTime = error "Replace with the auction's end time"
     }
