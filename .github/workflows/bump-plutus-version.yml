@@ -17,7 +17,7 @@ jobs:
 
       - name: Change Plutus Versions
         run: |
-          CURRENT_DATE=$(date +"%Y-%m-%dT00:00:00Z")
+          CURRENT_DATE=$(date +"%Y-%m-%dT%H:%M:%SZ")
           sed -i "s/\(hackage.haskell.org \).*\$/\1$CURRENT_DATE/" cabal.project
           sed -i "s/\(cardano-haskell-packages \).*\$/\1$CURRENT_DATE/" cabal.project
           
