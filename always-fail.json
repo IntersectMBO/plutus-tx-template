@@ -1,0 +1,33 @@
+{
+  "$id": "always-fail",
+  "$schema": "https://cips.cardano.org/cips/cip57/schemas/plutus-blueprint.json",
+  "$vocabulary": {
+    "https://cips.cardano.org/cips/cip57": true,
+    "https://json-schema.org/draft/2020-12/vocab/applicator": true,
+    "https://json-schema.org/draft/2020-12/vocab/core": true,
+    "https://json-schema.org/draft/2020-12/vocab/validation": true
+  },
+  "preamble": {
+    "title": "Always Fail",
+    "description": "Blueprint for a Plutus script that always fails",
+    "version": "1.0.0",
+    "plutusVersion": "v3",
+    "license": "MIT"
+  },
+  "validators": [
+    {
+      "title": "Always Fail",
+      "description": "Plutus script that always fails",
+      "redeemer": {
+        "title": "Redeemer",
+        "description": "Redeemer for the always fail validator",
+        "purpose": "spend",
+        "schema": {
+          "$ref": "#/definitions/Unit"
+        }
+      },
+      "compiledCode": "450101002601",
+      "hash": "ebb18a12777410738fdeaa77ec0fd582685d677b6b34de9a6e3b6d7e"
+    }
+  ]
+}

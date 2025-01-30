@@ -15,6 +15,7 @@ library scripts
   exposed-modules:
     AuctionMintingPolicy
     AuctionValidator
+    AlwaysFail
 
   build-depends:
     , base
@@ -24,6 +25,20 @@ library scripts
 
   if !(impl(ghcjs) || os(ghcjs))
     build-depends: plutus-tx-plugin
+
+executable gen-always-fail-blueprint
+  import:           options
+  hs-source-dirs:   app
+  main-is:          GenAlwaysFailBlueprint.hs
+  build-depends:
+    , base
+    , bytestring
+    , containers
+    , plutus-core ^>=1.40.0.0
+    , plutus-ledger-api ^>=1.40.0.0
+    , plutus-tx ^>=1.40.0.0
+    , plutus-tx-plugin ^>=1.40.0.0
+    , scripts
 
 executable gen-auction-validator-blueprint
   import:           options
