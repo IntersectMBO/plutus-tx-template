@@ -24,7 +24,7 @@ A template repository for your `plutus-tx` smart contract project.
 
 - With Nix (**recommended**)
 
-  Follow [these instructions](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/install.md) to install and configure nix, even if you already have it installed.
+  Follow [these instructions](https://github.com/input-output-hk/iogx/blob/main/doc/nix-setup-guide.md) to install and configure nix, *even if you already have it installed*.
 
   Then enter the shell using `nix develop`.
 
