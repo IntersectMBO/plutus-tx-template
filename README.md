@@ -9,14 +9,14 @@ A template repository for your `plutus-tx` smart contract project.
 - From the command line:
 
   ```
-  gh repo create my-project --private --template IntersectMBO/plutus-tx-template
+  gh repo create my-project --private --template IntersectMBO/plinth-template
   ```
 
-- Or from the [GitHub web page](https://github.com/IntersectMBO/plutus-tx-template), click the top-right green button:
+- Or from the [GitHub web page](https://github.com/IntersectMBO/plinth-template), click the top-right green button:
 
   `Use this template -> Create new repository`
 
-- Or just fork/clone `plutus-tx-template` (but note that this is a template repository)
+- Or just fork/clone `plinth-template` (but note that this is a template repository)
 
   More information on GitHub template repositories can be found [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
@@ -32,7 +32,7 @@ A template repository for your `plutus-tx` smart contract project.
 
 - With Docker / Devcontainers / Codespaces
 
-  From the [GitHub web page](https://github.com/IntersectMBO/plutus-tx-template), click the top-right green button:
+  From the [GitHub web page](https://github.com/IntersectMBO/plinth-template), click the top-right green button:
 
   `Use this template -> Open in a codespace`
 
