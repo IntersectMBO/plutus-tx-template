@@ -9,7 +9,7 @@
 cabalProject:
 
 {
-  name = "plutus-tx-template";
+  name = "plinth-template";
 
   packages = [
   ];

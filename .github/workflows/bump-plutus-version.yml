@@ -22,10 +22,10 @@ jobs:
           sed -i "s/\(cardano-haskell-packages \).*\$/\1$CURRENT_DATE/" cabal.project
           
           PLUTUS_VERSION=${{ github.event.inputs.version }}
-          sed -i "s/\(plutus-core \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
-          sed -i "s/\(plutus-ledger-api \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
-          sed -i "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
-          sed -i "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plutus-tx-template.cabal"
+          sed -i "s/\(plutus-core \).*\$/\1\^>=$PLUTUS_VERSION/" "plinth-template.cabal"
+          sed -i "s/\(plutus-ledger-api \).*\$/\1\^>=$PLUTUS_VERSION/" "plinth-template.cabal"
+          sed -i "s/\(plutus-tx \).*\$/\1\^>=$PLUTUS_VERSION/" "plinth-template.cabal"
+          sed -i "s/\(plutus-tx-plugin \).*\$/\1\^>=$PLUTUS_VERSION/" "plinth-template.cabal"
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main

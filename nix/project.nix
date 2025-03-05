@@ -17,7 +17,7 @@ let
         "https://chap.intersectmbo.org/" = inputs.CHaP;
       };
 
-      name = "plutus-tx-template";
+      name = "plinth-template";
 
       compiler-nix-name = lib.mkDefault "ghc96";
 
